@@ -6,12 +6,13 @@ export interface IInputProps {
   id: string
   label: string
   placeholder?: string
+  type: 'input' | 'password'
 }
 
-const Input = ({ id, label, placeholder }: IInputProps) => (
+const Input = ({ id, label, placeholder, type = 'input' }: IInputProps) => (
   <label htmlFor={id} className={styles.label}>
       {label}
-      <input className={styles.input} id={id} placeholder={placeholder} />
+      <input className={styles.input} id={id} type={type} placeholder={placeholder} />
   </label>
 )
 
