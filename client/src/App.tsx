@@ -1,14 +1,17 @@
-import * as React from 'react'
+import React, { lazy } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
-import Input from './ui/input'
+import Button from './ui/button'
+
+const RegistrationPage = lazy(() => import('./components/RegistrationForm'))
 
 const App = () => (
-    <div>
-        <h2 className="text">Welcome to React App</h2>
-        <h3>
-            <Input id="asdsadsad" label="123123123123" />
-        </h3>
-    </div>
+    <>
+        <Button onClick={() => console.log(1)}>asasdas</Button>
+        <Routes>
+            <Route path="/" element={<RegistrationPage />} />
+        </Routes>
+    </>
 )
 
 export default App

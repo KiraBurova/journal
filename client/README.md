@@ -4,8 +4,8 @@
 
 Steps:
 
-- Create UI kit
-- Cover UI kit with tests
+- Add fonts
+- Start working on registration form
 
 Instruments:
 

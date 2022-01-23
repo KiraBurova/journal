@@ -23,7 +23,7 @@ module.exports = {
                 },
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.scss$/i,
                 exclude: /node_modules/,
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -35,6 +35,10 @@ module.exports = {
                     },
                     'sass-loader',
                 ],
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.svg$/,

@@ -1,7 +1,20 @@
-import * as React from 'react'
-import * as ReactDom from 'react-dom'
+import React, { Suspense } from 'react'
+import * as ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
+
+import 'normalize.css'
+
 import './styles/vars.scss'
 import './App.scss'
 
-ReactDom.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <Suspense fallback="Loading...">
+                <App />
+            </Suspense>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root'),
+)
