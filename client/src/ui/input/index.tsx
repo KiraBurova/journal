@@ -6,7 +6,7 @@ export interface IInputProps {
   id: string
   label: string
   placeholder?: string
-  type: 'input' | 'password'
+  type?: 'input' | 'password'
 }
 
 const Input = ({ id, label, placeholder, type = 'input' }: IInputProps) => (
