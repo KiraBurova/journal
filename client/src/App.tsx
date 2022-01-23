@@ -1,12 +1,12 @@
 import * as React from 'react'
 
-import Button from './ui/button'
+import Input from './ui/input'
 
 const App = () => (
   <div>
     <h2 className="text">Welcome to React App</h2>
     <h3>
-      <Button  onClick={() => console.log(12)}>sdfsdfsdfsfd</Button>
+      <Input id='asdsadsad' label='123123123123' />
     </h3>
   </div>
 )
