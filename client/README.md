@@ -4,7 +4,6 @@
 
 Steps:
 
-- Add fonts
 - Start working on registration form
 
 Instruments:
