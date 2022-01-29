@@ -11,7 +11,9 @@ export interface IButtonProps {
     type?: 'button' | 'submit' | 'reset'
     disabled?: boolean
     children: React.ReactNode
-    onClick: () => void
+    onClick?: () => void
+    className?: string
+    dataTestId?: string
 }
 
 const Button = ({
@@ -21,11 +23,14 @@ const Button = ({
     secondary,
     disabled,
     onClick,
+    className,
+    dataTestId,
 }: IButtonProps) => (
     <button
+        data-testid={dataTestId}
         type={type}
         disabled={disabled}
-        className={classNames(styles.button, {
+        className={classNames(className, styles.button, {
             [styles.primary]: primary,
             [styles.secondary]: secondary,
         })}

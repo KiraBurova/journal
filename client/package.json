@@ -29,6 +29,7 @@
         "@testing-library/react": "^12.1.2",
         "@testing-library/user-event": "^13.5.0",
         "classnames": "^2.3.1",
+        "formik": "^2.2.9",
         "jest": "^27.4.7",
         "jest-mock": "^27.4.6",
         "normalize.css": "^8.0.1",

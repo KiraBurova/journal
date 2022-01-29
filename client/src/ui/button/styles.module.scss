@@ -37,3 +37,19 @@
         border: 1px solid var(--dark-gray);
     }
 }
+
+button:disabled,
+button[disabled] {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    border: 1px solid transparent;
+    cursor: default;
+
+    &:hover {
+        background-color: var(--light-gray);
+        color: var(--dark-gray);
+        border: none;
+        box-shadow: none;
+        border: 1px solid transparent;
+    }
+}
