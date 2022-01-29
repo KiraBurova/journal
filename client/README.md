@@ -4,7 +4,10 @@
 
 Steps:
 
-- Start working on registration form
+- Add Login form
+- Create pages for forms
+- Add routes for two pages
+- Add some styles to pages
 
 Instruments:
 

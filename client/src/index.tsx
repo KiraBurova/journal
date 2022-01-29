@@ -7,6 +7,7 @@ import App from './App'
 import 'normalize.css'
 
 import './styles/vars.scss'
+import './styles/fonts.scss'
 import './App.scss'
 
 const client = new ApolloClient({
