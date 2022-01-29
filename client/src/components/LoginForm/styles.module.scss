@@ -1,0 +1,54 @@
+.container {
+    position: relative;
+    height: 400px;
+    width: 600px;
+    padding: 2em 3.25em;
+    border: 0.0625em solid var(--light-gray);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        clip-path: polygon(78% 0, 100% 0%, 100% 100%, 78% 100%, 69% 50%);
+        background-image: url('../../images/mountains.jpg');
+        background-color: var(--light-gray);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.heading {
+    font-weight: 700;
+}
+
+.form {
+    box-sizing: border-box;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: start;
+}
+
+.submitButton,
+.input,
+input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.errorMessage {
+    font-size: 0.8rem;
+    margin: 0.2em 0;
+    color: var(--error);
+}
