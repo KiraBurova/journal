@@ -4,7 +4,7 @@
 
 Steps:
 
-
+- set up apollo server and try to connect it to apollo client for registration
 
 Instruments:
 
