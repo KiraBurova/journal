@@ -38,8 +38,7 @@
     }
 }
 
-button:disabled,
-button[disabled] {
+.disabled {
     background-color: var(--light-gray);
     color: var(--dark-gray);
     border: 1px solid transparent;

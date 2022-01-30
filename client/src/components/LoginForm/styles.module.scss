@@ -37,12 +37,11 @@
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    align-items: start;
+    align-items: flex-start;
 }
 
 .submitButton,
-.input,
-input {
+.input {
     box-sizing: border-box;
     width: 100%;
 }

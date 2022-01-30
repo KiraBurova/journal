@@ -33,6 +33,7 @@ const Button = ({
         className={classNames(className, styles.button, {
             [styles.primary]: primary,
             [styles.secondary]: secondary,
+            [styles.disabled]: disabled,
         })}
         onClick={onClick}>
         {children}

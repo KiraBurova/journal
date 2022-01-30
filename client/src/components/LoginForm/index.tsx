@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Link from 'next/link'
 
 import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
@@ -18,6 +19,9 @@ const LoginForm = () => {
     return (
         <div className={styles.container}>
             <h1 className={styles.heading}>Log in</h1>
+            <p>
+                New here? <Link href="/registration">Sign up</Link>
+            </p>
             <Formik
                 initialValues={{ username: '', password: '' }}
                 validationSchema={validation}

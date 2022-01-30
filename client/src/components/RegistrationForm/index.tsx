@@ -1,14 +1,7 @@
 import * as React from 'react'
+import Link from 'next/link'
 
-import {
-    Formik,
-    // FormikHelpers,
-    FormikProps,
-    ErrorMessage,
-    Form,
-    Field,
-    // FieldProps,
-} from 'formik'
+import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
 import Button from '../../ui/button'
 import Input from '../../ui/input'
@@ -26,7 +19,9 @@ const RegistrationForm = () => {
     return (
         <div className={styles.container}>
             <h1 className={styles.heading}>Create new account</h1>
-            <p>Already a member? Log in</p>
+            <p>
+                Already a member? <Link href="/login">Log in</Link>
+            </p>
             <Formik
                 initialValues={{ username: '', email: '', password: '' }}
                 validationSchema={validation}
