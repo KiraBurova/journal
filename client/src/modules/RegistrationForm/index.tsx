@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 
+import { toast } from 'react-toastify'
 import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
 import Button from '../../ui/button'
@@ -22,8 +23,12 @@ const RegistrationForm = () => {
             },
         },
     })
-    const handleSubmit = (values: UserInput) => {
-        register({ variables: { user: values } })
+    const handleSubmit = async (values: UserInput) => {
+        try {
+            await register({ variables: { user: values } })
+        } catch (error) {
+            toast(error.message)
+        }
     }
 
     return (

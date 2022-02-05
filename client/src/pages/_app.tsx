@@ -1,9 +1,10 @@
 import * as React from 'react'
 
 import { ApolloProvider } from '@apollo/client'
-import { SnackbarProvider } from 'notistack'
+import { ToastContainer } from 'react-toastify'
 import client from '../lib/apolloClient'
 
+import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.scss'
 import '../styles/vars.scss'
 import '../styles/fonts.scss'
@@ -14,9 +15,10 @@ interface IApp {
 }
 
 export default ({ Component, pageProps }: IApp) => (
-    <ApolloProvider client={client}>
-        <SnackbarProvider>
+    <>
+        <ApolloProvider client={client}>
             <Component {...pageProps} />
-        </SnackbarProvider>
-    </ApolloProvider>
+        </ApolloProvider>
+        <ToastContainer hideProgressBar theme="colored" />
+    </>
 )

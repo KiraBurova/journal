@@ -1,3 +1,4 @@
+import { UserInputError } from 'apollo-server';
 import * as bcrypt from 'bcryptjs';
 import { MutationResolvers, QueryResolvers } from '../types/types';
 
@@ -17,6 +18,9 @@ const userResolvers: Resolvers = {
   },
   Mutation: {
     RegisterUser(_, { user }) {
+      if (!Object.values(user).length) {
+        throw new UserInputError('User information can not be empty.');
+      }
       const hash = bcrypt.hashSync('bacon', 8);
 
       console.log(user, hash);
