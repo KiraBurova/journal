@@ -1,12 +1,13 @@
 import { gql } from '@apollo/client'
 
-const BOOKS = gql`
-    query GetBooks {
-        books {
-            title
-            author
+const REGISTER_USER = gql`
+    mutation RegisterUser($user: UserInput!) {
+        registerUser(user: $user) {
+            username
+            email
+            password
         }
     }
 `
 
-export default BOOKS
+export default REGISTER_USER

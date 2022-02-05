@@ -1,18 +1,7 @@
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
+import userResolvers from './user';
 
 const resolvers = {
-  Query: {
-    books: () => books,
-  },
+  ...userResolvers,
 };
 
 export default resolvers;
