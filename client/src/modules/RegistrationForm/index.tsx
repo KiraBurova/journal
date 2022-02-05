@@ -16,7 +16,7 @@ import styles from './styles.module.scss'
 export interface IRegistrationForm {}
 
 const RegistrationForm = () => {
-    const [register] = useMutation(REGISTER_USER)
+    const [register, { loading }] = useMutation<IFormValues>(REGISTER_USER)
     const handleSubmit = (values: IFormValues) => {
         register({ variables: { user: values } })
     }
@@ -77,7 +77,7 @@ const RegistrationForm = () => {
                         </span>
                         <Button
                             dataTestId="submit-button"
-                            disabled={!isValid}
+                            disabled={!isValid || loading}
                             className={styles.submitButton}
                             type="submit">
                             Submit
