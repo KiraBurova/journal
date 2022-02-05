@@ -3,21 +3,26 @@ import Link from 'next/link'
 
 import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
-import { useMutation } from '@apollo/client'
 import Button from '../../ui/button'
 import Input from '../../ui/input'
 
+import { useRegisterUserMutation, UserInput } from '../../graphql/generated'
+
 import validation from './validation'
-import { IFormValues } from './types'
-import REGISTER_USER from './schema'
 
 import styles from './styles.module.scss'
 
-export interface IRegistrationForm {}
-
 const RegistrationForm = () => {
-    const [register, { loading }] = useMutation<IFormValues>(REGISTER_USER)
-    const handleSubmit = (values: IFormValues) => {
+    const [register, { loading }] = useRegisterUserMutation({
+        variables: {
+            user: {
+                username: '',
+                email: '',
+                password: '',
+            },
+        },
+    })
+    const handleSubmit = (values: UserInput) => {
         register({ variables: { user: values } })
     }
 
@@ -32,7 +37,7 @@ const RegistrationForm = () => {
                 validationSchema={validation}
                 onSubmit={handleSubmit}
                 enableReinitialize>
-                {({ isValid, handleChange }: FormikProps<IFormValues>) => (
+                {({ isValid, handleChange }: FormikProps<UserInput>) => (
                     <Form className={styles.form}>
                         <Field
                             className={styles.input}

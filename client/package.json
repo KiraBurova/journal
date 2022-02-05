@@ -11,7 +11,8 @@
         "test": "jest",
         "test:coverage": "npm run test -- --coverage --watchAll",
         "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook"
+        "build-storybook": "build-storybook",
+        "generate": "graphql-codegen"
     },
     "repository": {
         "type": "git",
@@ -27,6 +28,10 @@
     "dependencies": {
         "@apollo/client": "^3.5.8",
         "@babel/runtime": "^7.16.7",
+        "@graphql-codegen/cli": "^2.5.0",
+        "@graphql-codegen/typescript": "^2.4.3",
+        "@graphql-codegen/typescript-operations": "^2.2.4",
+        "@graphql-codegen/typescript-react-apollo": "^3.2.5",
         "@storybook/preset-scss": "^1.0.3",
         "@storybook/react": "^6.4.15",
         "@testing-library/jest-dom": "^5.16.1",
