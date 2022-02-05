@@ -1,17 +1,29 @@
 import * as React from 'react'
 import { render, screen, fireEvent, act } from '@testing-library/react'
+import { MockedProvider } from '@apollo/client/testing'
 import LoginForm from './index'
 
+const mocks = []
+
+const setup = () => {
+    const component = render(
+        <MockedProvider mocks={mocks} addTypename={false}>
+            <LoginForm />
+        </MockedProvider>,
+    )
+
+    return { component }
+}
 describe('LoginForm', () => {
     test('Should render component', () => {
-        render(<LoginForm />)
+        setup()
 
         const formEl = screen.getByText(/Log in/i)
 
         expect(formEl).toBeInTheDocument()
     })
     test('Should show error if field is empty', async () => {
-        render(<LoginForm />)
+        setup()
 
         const buttonEl = screen.getByTestId(/submit-button/i)
 

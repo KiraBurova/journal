@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { ApolloProvider } from '@apollo/client'
+import { SnackbarProvider } from 'notistack'
 import client from '../lib/apolloClient'
 
 import '../styles/globals.scss'
@@ -14,6 +15,8 @@ interface IApp {
 
 export default ({ Component, pageProps }: IApp) => (
     <ApolloProvider client={client}>
-        <Component {...pageProps} />
+        <SnackbarProvider>
+            <Component {...pageProps} />
+        </SnackbarProvider>
     </ApolloProvider>
 )
