@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import LoginForm from '../components/LoginForm'
+import LoginForm from '../modules/LoginForm'
 
 import styles from './pages.module.scss'
 

@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
+import { useQuery } from '@apollo/client'
 import Button from '../../ui/button'
 import Input from '../../ui/input'
 
@@ -10,10 +11,13 @@ import validation from './validation'
 import { IFormValues } from './types'
 
 import styles from './styles.module.scss'
+import BOOKS from './schema'
 
 export interface IRegistrationForm {}
 
 const RegistrationForm = () => {
+    const { loading, error, data } = useQuery(BOOKS)
+    console.log(data, loading, error)
     const handleSubmit = () => {}
 
     return (

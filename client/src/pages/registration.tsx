@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import RegistrationForm from '../components/RegistrationForm'
+import RegistrationForm from '../modules/RegistrationForm'
 
 import styles from './pages.module.scss'
 
