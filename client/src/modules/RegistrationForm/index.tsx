@@ -42,7 +42,11 @@ const RegistrationForm = () => {
                 validationSchema={validation}
                 onSubmit={handleSubmit}
                 enableReinitialize>
-                {({ isValid, handleChange }: FormikProps<UserInput>) => (
+                {({
+                    isValid,
+                    handleChange,
+                    handleBlur,
+                }: FormikProps<UserInput>) => (
                     <Form className={styles.form}>
                         <Field
                             className={styles.input}
@@ -51,6 +55,7 @@ const RegistrationForm = () => {
                             label="Username"
                             component={Input}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <span
                             data-testid="username-error"

@@ -11,6 +11,7 @@ export interface IInputProps {
     type?: 'input' | 'password'
     className?: string
     onChange: () => void
+    onBlur: () => void
 }
 
 const Input = ({
@@ -20,6 +21,7 @@ const Input = ({
     type = 'input',
     className,
     onChange,
+    onBlur,
 }: IInputProps) => (
     <label htmlFor={id} className={classNames(className, styles.label)}>
         {label}
@@ -29,6 +31,7 @@ const Input = ({
             type={type}
             placeholder={placeholder}
             onChange={onChange}
+            onBlur={onBlur}
         />
     </label>
 )
