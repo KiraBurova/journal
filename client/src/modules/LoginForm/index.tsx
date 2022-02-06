@@ -12,7 +12,7 @@ import { IFormValues } from './types'
 import styles from './styles.module.scss'
 
 export interface ILoginFormForm {}
- 
+
 const LoginForm = () => {
     const handleSubmit = () => {}
 
@@ -27,7 +27,11 @@ const LoginForm = () => {
                 validationSchema={validation}
                 onSubmit={handleSubmit}
                 enableReinitialize>
-                {({ isValid, handleChange }: FormikProps<IFormValues>) => (
+                {({
+                    isValid,
+                    handleChange,
+                    handleBlur,
+                }: FormikProps<IFormValues>) => (
                     <Form className={styles.form}>
                         <Field
                             className={styles.input}
@@ -36,6 +40,7 @@ const LoginForm = () => {
                             label="Username"
                             component={Input}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <span
                             data-testid="username-error"
@@ -50,6 +55,7 @@ const LoginForm = () => {
                             type="password"
                             component={Input}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <span
                             data-testid="password-error"

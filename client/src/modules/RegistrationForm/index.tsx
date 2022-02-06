@@ -70,6 +70,7 @@ const RegistrationForm = () => {
                             type="email"
                             component={Input}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <span
                             data-testid="email-error"
@@ -84,6 +85,7 @@ const RegistrationForm = () => {
                             type="password"
                             component={Input}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <span
                             data-testid="password-error"
