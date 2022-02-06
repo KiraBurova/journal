@@ -2,8 +2,8 @@ import { ApolloError, UserInputError } from 'apollo-server';
 import * as bcrypt from 'bcryptjs';
 import { MutationResolvers, QueryResolvers } from '../types/types';
 
-import UserModel from '../models/user';
-import UserSchema from '../validation/user';
+import { UserModel } from '../models';
+import { UserSchema } from '../validation';
 
 interface Resolvers {
   Query: QueryResolvers;
