@@ -16,8 +16,11 @@
     "@graphql-codegen/typescript-resolvers": "^2.5.0",
     "apollo-server": "^3.6.2",
     "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.0",
     "graphql": "^16.3.0",
-    "joi": "^17.6.0"
+    "joi": "^17.6.0",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.2.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
