@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
@@ -13,6 +14,7 @@ import validation from './validation'
 import styles from './styles.module.scss'
 
 const RegistrationForm = () => {
+    const router = useRouter()
     const [register, { loading }] = useRegisterUserMutation({
         variables: {
             user: {
@@ -25,13 +27,15 @@ const RegistrationForm = () => {
     const handleSubmit = async (values: UserInput) => {
         try {
             await register({ variables: { user: values } })
+            router.push('/login')
+            toast('Registration was successful!')
         } catch (error) {
             toast(error.message)
         }
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} data-testid="registration-form">
             <h1 className={styles.heading}>Create new account</h1>
             <p>
                 Already a member? <Link href="/login">Log in</Link>

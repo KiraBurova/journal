@@ -28,6 +28,7 @@ const LoginForm = () => {
             const { data } = await login({ variables: { user: values } })
             saveToken(data.LoginUser)
             router.push('/home')
+            toast('Logged in!')
         } catch (error) {
             toast(error.message)
         }

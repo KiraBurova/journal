@@ -9,16 +9,32 @@ import '../styles/globals.scss'
 import '../styles/vars.scss'
 import '../styles/fonts.scss'
 
+import styles from './layout.module.scss'
+
 interface IApp {
     Component: any
     pageProps: unknown
 }
 
+interface ILayout {
+    children: JSX.Element
+}
+
+const Layout = ({ children }: ILayout) => (
+    <div className={styles.centeredPage}>{children}</div>
+)
+
 export default ({ Component, pageProps }: IApp) => (
-    <>
-        <ApolloProvider client={client}>
-            <Component {...pageProps} />
-        </ApolloProvider>
-        <ToastContainer hideProgressBar theme="colored" autoClose={3000} />
-    </>
+    <ApolloProvider client={client}>
+        <Layout>
+            <>
+                <ToastContainer
+                    hideProgressBar
+                    theme="colored"
+                    autoClose={10000}
+                />
+                <Component {...pageProps} />
+            </>
+        </Layout>
+    </ApolloProvider>
 )
