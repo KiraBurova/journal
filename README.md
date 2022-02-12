@@ -4,8 +4,8 @@
 
 Steps:
 
-- make login
-- initial routing 
+- add header
+- add logout
 
 Instruments:
 

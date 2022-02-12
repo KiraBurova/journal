@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
@@ -13,6 +14,7 @@ import validation from './validation'
 import styles from './styles.module.scss'
 
 const LoginForm = () => {
+    const router = useRouter()
     const [login, { loading }] = useLoginUserMutation({
         variables: {
             user: {
@@ -25,6 +27,7 @@ const LoginForm = () => {
         try {
             const { data } = await login({ variables: { user: values } })
             saveToken(data.LoginUser)
+            router.push('/home')
         } catch (error) {
             toast(error.message)
         }
