@@ -1,8 +1,6 @@
-import { object, SchemaOf, string } from 'yup'
+import { object, string } from 'yup'
 
-import { IFormValues } from './types'
-
-const validation: SchemaOf<IFormValues> = object({
+const validation = object({
     username: string()
         .max(20, 'Username should not be more than 20 characters')
         .required('Please enter username'),

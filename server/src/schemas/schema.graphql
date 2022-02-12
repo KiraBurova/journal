@@ -1,11 +1,11 @@
 type User {
-  username: String!
+  username: String
   email: String!
   password: String!
 }
 
 input UserInput {
-  username: String!
+  username: String
   email: String!
   password: String!
 }
@@ -17,4 +17,8 @@ type Query {
 
 type Mutation {
   RegisterUser(user: UserInput!): Int
+}
+
+type Mutation {
+  LoginUser(user: UserInput!): String!
 }

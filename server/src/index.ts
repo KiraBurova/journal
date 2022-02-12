@@ -1,4 +1,5 @@
 import { readFileSync } from 'fs';
+var cors = require('cors');
 
 import { ApolloServer } from 'apollo-server';
 
@@ -13,6 +14,9 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: ({ req }) => {
+      return req;
+    },
   });
 
   try {

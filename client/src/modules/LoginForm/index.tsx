@@ -1,20 +1,34 @@
 import * as React from 'react'
 import Link from 'next/link'
-
+import { toast } from 'react-toastify'
 import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
 import Button from '../../ui/button'
 import Input from '../../ui/input'
+import { useLoginUserMutation, UserInput } from '../../graphql/generated'
+import { saveToken } from '../../utils/token'
 
 import validation from './validation'
-import { IFormValues } from './types'
 
 import styles from './styles.module.scss'
 
-export interface ILoginFormForm {}
-
 const LoginForm = () => {
-    const handleSubmit = () => {}
+    const [login, { loading }] = useLoginUserMutation({
+        variables: {
+            user: {
+                email: '',
+                password: '',
+            },
+        },
+    })
+    const handleSubmit = async (values: UserInput) => {
+        try {
+            const { data } = await login({ variables: { user: values } })
+            saveToken(data.LoginUser)
+        } catch (error) {
+            toast(error.message)
+        }
+    }
 
     return (
         <div className={styles.container}>
@@ -23,7 +37,7 @@ const LoginForm = () => {
                 New here? <Link href="/registration">Sign up</Link>
             </p>
             <Formik
-                initialValues={{ username: '', password: '' }}
+                initialValues={{ email: '', password: '' }}
                 validationSchema={validation}
                 onSubmit={handleSubmit}
                 enableReinitialize>
@@ -31,21 +45,22 @@ const LoginForm = () => {
                     isValid,
                     handleChange,
                     handleBlur,
-                }: FormikProps<IFormValues>) => (
+                }: FormikProps<UserInput>) => (
                     <Form className={styles.form}>
                         <Field
                             className={styles.input}
-                            id="username"
-                            name="username"
-                            label="Username"
+                            id="email"
+                            name="email"
+                            label="Email"
+                            type="email"
                             component={Input}
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
                         <span
-                            data-testid="username-error"
+                            data-testid="email-error"
                             className={styles.errorMessage}>
-                            <ErrorMessage name="username" />
+                            <ErrorMessage name="email" />
                         </span>
                         <Field
                             className={styles.input}
@@ -64,7 +79,7 @@ const LoginForm = () => {
                         </span>
                         <Button
                             dataTestId="submit-button"
-                            disabled={!isValid}
+                            disabled={!isValid || loading}
                             className={styles.submitButton}
                             type="submit">
                             Submit

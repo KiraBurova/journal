@@ -1,9 +1,10 @@
 import { ApolloError, UserInputError } from 'apollo-server';
 import * as bcrypt from 'bcryptjs';
-import { MutationResolvers, QueryResolvers } from '../types/types';
+import * as jwt from 'jsonwebtoken';
+import { MutationResolvers, QueryResolvers, User } from '../types/types';
 
 import { UserModel } from '../models';
-import { UserSchema } from '../validation';
+import { UserRegistrationSchema, UserLoginSchema } from '../validation';
 
 interface Resolvers {
   Query: QueryResolvers;
@@ -23,14 +24,10 @@ const userResolvers: Resolvers = {
     RegisterUser: async (_, { user }) => {
       const { username, email, password } = user;
 
-      if (!Object.values(user).length) {
-        throw new UserInputError('User information can not be empty.');
-      }
-
-      const validatedValues = await UserSchema.validateAsync({ username, email, password });
-
-      if (!validatedValues) {
-        throw new ApolloError('Validation failed.');
+      try {
+        await UserRegistrationSchema.validateAsync({ username, email, password });
+      } catch (validationError) {
+        throw new ApolloError(validationError);
       }
 
       const foundUser = await UserModel.findOne({ email: email });
@@ -39,17 +36,43 @@ const userResolvers: Resolvers = {
         throw new ApolloError('User already exists.');
       }
 
-      const hash = bcrypt.hashSync('bacon', 8);
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(password, salt);
 
       const newUser = new UserModel({ username, email, password: hash });
 
-      const savedUser = await newUser.save();
-
-      if (!savedUser) {
-        throw new ApolloError('Failed to create user.');
+      try {
+        await newUser.save();
+      } catch (savingError) {
+        throw new ApolloError(savingError);
       }
 
       return 1;
+    },
+    LoginUser: async (_, { user }) => {
+      const { email, password } = user;
+
+      try {
+        await UserLoginSchema.validateAsync({ email, password });
+      } catch (validationError) {
+        throw new ApolloError(validationError);
+      }
+
+      let foundUser: User;
+
+      try {
+        foundUser = await UserModel.findOne({ email: email });
+      } catch (foundError) {
+        throw new ApolloError(foundError);
+      }
+
+      const isValid = await bcrypt.compare(password, foundUser.password);
+
+      if (isValid) {
+        return jwt.sign(user, process.env.SECRET);
+      } else {
+        throw new ApolloError('Password is not correct.');
+      }
     },
   },
 };

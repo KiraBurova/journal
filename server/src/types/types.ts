@@ -16,7 +16,13 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  LoginUser: Scalars['String'];
   RegisterUser?: Maybe<Scalars['Int']>;
+};
+
+
+export type MutationLoginUserArgs = {
+  user: UserInput;
 };
 
 
@@ -34,13 +40,13 @@ export type User = {
   __typename?: 'User';
   email: Scalars['String'];
   password: Scalars['String'];
-  username: Scalars['String'];
+  username?: Maybe<Scalars['String']>;
 };
 
 export type UserInput = {
   email: Scalars['String'];
   password: Scalars['String'];
-  username: Scalars['String'];
+  username?: InputMaybe<Scalars['String']>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -134,6 +140,7 @@ export type ResolversParentTypes = ResolversObject<{
 }>;
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
+  LoginUser?: Resolver<ResolversTypes['String'], ParentType, ContextType, RequireFields<MutationLoginUserArgs, 'user'>>;
   RegisterUser?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType, RequireFields<MutationRegisterUserArgs, 'user'>>;
 }>;
 
@@ -145,7 +152,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = ResolversObject<{
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   password?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  username?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 

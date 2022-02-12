@@ -19,6 +19,6 @@ export default ({ Component, pageProps }: IApp) => (
         <ApolloProvider client={client}>
             <Component {...pageProps} />
         </ApolloProvider>
-        <ToastContainer hideProgressBar theme="colored" />
+        <ToastContainer hideProgressBar theme="colored" autoClose={3000} />
     </>
 )
