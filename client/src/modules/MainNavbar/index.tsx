@@ -6,6 +6,7 @@ import Button from '../../ui/button'
 
 import { getToken, deleteToken } from '../../utils/token'
 import { $tokenStore, setTokenEvent } from '../../store/store'
+import { PATHS } from '../../constants'
 
 import styles from './styles.module.scss'
 
@@ -25,7 +26,7 @@ const MainNavbar = () => {
     const handleLogout = () => {
         deleteToken()
         setTokenEvent(getToken())
-        router.push('/login')
+        router.push(PATHS.LOGIN)
     }
 
     const showLogoutButton = Boolean(token)

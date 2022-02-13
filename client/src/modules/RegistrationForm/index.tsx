@@ -6,6 +6,7 @@ import { Formik, FormikProps, ErrorMessage, Form, Field } from 'formik'
 
 import Button from '../../ui/button'
 import Input from '../../ui/input'
+import { PATHS } from '../../constants'
 
 import { useRegisterUserMutation, UserInput } from '../../graphql/generated'
 
@@ -27,7 +28,7 @@ const RegistrationForm = () => {
     const handleSubmit = async (values: UserInput) => {
         try {
             await register({ variables: { user: values } })
-            router.push('/login')
+            router.push(PATHS.LOGIN)
             toast.success('Registration was successful!')
         } catch (error) {
             toast.error(error.message)

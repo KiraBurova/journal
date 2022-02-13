@@ -10,6 +10,7 @@ import { useLoginUserMutation, UserInput } from '../../graphql/generated'
 import { saveToken } from '../../utils/token'
 
 import { setTokenEvent } from '../../store/store'
+import { PATHS } from '../../constants'
 import validation from './validation'
 
 import styles from './styles.module.scss'
@@ -29,7 +30,7 @@ const LoginForm = () => {
             const { data } = await login({ variables: { user: values } })
             saveToken(data.LoginUser)
             setTokenEvent(data.LoginUser)
-            router.push('/home')
+            router.push(PATHS.HOME)
         } catch (error) {
             toast.error(error.message)
         }
