@@ -1,34 +1,35 @@
-import { readFileSync } from 'fs';
-var cors = require('cors');
+import { readFileSync } from 'fs'
 
-import { ApolloServer } from 'apollo-server';
+import { ApolloServer } from 'apollo-server'
 
-import * as mongoose from 'mongoose';
-import resolvers from './resolvers';
+import * as mongoose from 'mongoose'
+import resolvers from './resolvers'
 
-const typeDefs = readFileSync(__dirname + '/schemas/schema.graphql').toString('utf-8');
+const typeDefs = readFileSync(__dirname + '/schemas/schema.graphql').toString(
+    'utf-8',
+)
 
-require('dotenv').config();
+require('dotenv').config()
 
 const startServer = async () => {
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: ({ req }) => {
-      return req;
-    },
-  });
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers,
+        context: ({ req }) => {
+            return req
+        },
+    })
 
-  try {
-    await mongoose.connect(process.env.MONGO_DB_URI);
-    console.log(`Mongoose connected on port`);
-  } catch (error) {
-    console.log(error);
-  }
+    try {
+        await mongoose.connect(process.env.MONGO_DB_URI)
+        console.log(`Mongoose connected on port`)
+    } catch (error) {
+        console.log(error)
+    }
 
-  server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
-  });
-};
+    server.listen().then(({ url }) => {
+        console.log(`🚀  Server ready at ${url}`)
+    })
+}
 
-startServer();
+startServer()

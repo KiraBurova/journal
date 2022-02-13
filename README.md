@@ -4,7 +4,8 @@
 
 Steps:
 
-- add constants for string
+- add float button for create-post route
+- add create-post route
 
 Instruments:
 

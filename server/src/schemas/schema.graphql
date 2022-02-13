@@ -1,24 +1,24 @@
 type User {
-  username: String
-  email: String!
-  password: String!
+    username: String
+    email: String!
+    password: String!
 }
 
 input UserInput {
-  username: String
-  email: String!
-  password: String!
+    username: String
+    email: String!
+    password: String!
 }
 
 type Query {
-  numberSix: Int! # Should always return the number 6 when queried
-  numberSeven: Int! # Should always return 7
+    numberSix: Int! # Should always return the number 6 when queried
+    numberSeven: Int! # Should always return 7
 }
 
 type Mutation {
-  RegisterUser(user: UserInput!): Int
+    RegisterUser(user: UserInput!): Int
 }
 
 type Mutation {
-  LoginUser(user: UserInput!): String!
+    LoginUser(user: UserInput!): String!
 }
