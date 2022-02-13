@@ -16,6 +16,12 @@ export const Primary: ComponentStory<typeof Button> = args => (
     </Button>
 )
 
+export const Secondary: ComponentStory<typeof Button> = args => (
+    <Button secondary {...args}>
+        Secondary
+    </Button>
+)
+
 export const Regular: ComponentStory<typeof Button> = args => (
     <Button {...args}>Click</Button>
 )

@@ -2,7 +2,9 @@ import * as React from 'react'
 
 import { ApolloProvider } from '@apollo/client'
 import { ToastContainer } from 'react-toastify'
+
 import client from '../lib/apolloClient'
+import MainNavbar from '../modules/MainNavbar'
 
 import 'react-toastify/dist/ReactToastify.css'
 import '../styles/globals.scss'
@@ -26,6 +28,7 @@ const Layout = ({ children }: ILayout) => (
 
 export default ({ Component, pageProps }: IApp) => (
     <ApolloProvider client={client}>
+        <MainNavbar />
         <Layout>
             <>
                 <ToastContainer

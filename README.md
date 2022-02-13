@@ -4,7 +4,6 @@
 
 Steps:
 
-- add header
 - add logout
 - add constants for string
 

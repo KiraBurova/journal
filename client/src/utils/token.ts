@@ -1,3 +1,5 @@
+import isServer from './isServer'
+
 const TOKEN_KEY = 'token'
 
 export const saveToken = (token: string) => {
@@ -6,8 +8,12 @@ export const saveToken = (token: string) => {
     }
 }
 
-export const getToken = () => localStorage.getItem(TOKEN_KEY)
-
+export const getToken = () => {
+    if (!isServer()) {
+        return localStorage.getItem(TOKEN_KEY)
+    }
+    return ''
+}
 export const deleteTokens = () => {
     localStorage.removeItem(TOKEN_KEY)
 }
