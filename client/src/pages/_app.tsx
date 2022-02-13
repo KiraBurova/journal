@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { ApolloProvider } from '@apollo/client'
 import { ToastContainer } from 'react-toastify'
+import { withHydrate } from 'effector-next'
 
 import client from '../lib/apolloClient'
 import MainNavbar from '../modules/MainNavbar'
@@ -26,7 +27,9 @@ const Layout = ({ children }: ILayout) => (
     <div className={styles.centeredPage}>{children}</div>
 )
 
-export default ({ Component, pageProps }: IApp) => (
+const enhance = withHydrate()
+
+export default enhance(({ Component, pageProps }: IApp) => (
     <ApolloProvider client={client}>
         <MainNavbar />
         <Layout>
@@ -34,10 +37,11 @@ export default ({ Component, pageProps }: IApp) => (
                 <ToastContainer
                     hideProgressBar
                     theme="colored"
-                    autoClose={10000}
+                    autoClose={2000}
+                    position="bottom-right"
                 />
                 <Component {...pageProps} />
             </>
         </Layout>
     </ApolloProvider>
-)
+))

@@ -14,6 +14,6 @@ export const getToken = () => {
     }
     return ''
 }
-export const deleteTokens = () => {
+export const deleteToken = () => {
     localStorage.removeItem(TOKEN_KEY)
 }

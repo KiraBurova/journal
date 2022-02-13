@@ -9,6 +9,7 @@ import Input from '../../ui/input'
 import { useLoginUserMutation, UserInput } from '../../graphql/generated'
 import { saveToken } from '../../utils/token'
 
+import { setTokenEvent } from '../../store/store'
 import validation from './validation'
 
 import styles from './styles.module.scss'
@@ -27,10 +28,10 @@ const LoginForm = () => {
         try {
             const { data } = await login({ variables: { user: values } })
             saveToken(data.LoginUser)
+            setTokenEvent(data.LoginUser)
             router.push('/home')
-            toast('Logged in!')
         } catch (error) {
-            toast(error.message)
+            toast.error(error.message)
         }
     }
 

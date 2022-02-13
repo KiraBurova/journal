@@ -1,4 +1,8 @@
-module.exports = {
+const { withEffectorReactAliases } = require('effector-next/tools')
+
+const enhance = withEffectorReactAliases()
+
+module.exports = enhance({
     async redirects() {
         return [
             {
@@ -8,4 +12,4 @@ module.exports = {
             },
         ]
     },
-}
+})

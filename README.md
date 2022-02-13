@@ -4,7 +4,6 @@
 
 Steps:
 
-- add logout
 - add constants for string
 
 Instruments:

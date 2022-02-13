@@ -28,9 +28,9 @@ const RegistrationForm = () => {
         try {
             await register({ variables: { user: values } })
             router.push('/login')
-            toast('Registration was successful!')
+            toast.success('Registration was successful!')
         } catch (error) {
-            toast(error.message)
+            toast.error(error.message)
         }
     }
 
