@@ -1,4 +1,4 @@
-import { ApolloError, UserInputError } from 'apollo-server'
+import { ApolloError } from 'apollo-server'
 import * as bcrypt from 'bcryptjs'
 import * as jwt from 'jsonwebtoken'
 import { MutationResolvers, QueryResolvers, User } from '../types/types'
@@ -51,7 +51,7 @@ const userResolvers: Resolvers = {
                 throw new ApolloError(savingError)
             }
 
-            return 1
+            return newUser
         },
         LoginUser: async (_, { user }) => {
             const { email, password } = user

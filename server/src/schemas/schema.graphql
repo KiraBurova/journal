@@ -10,15 +10,45 @@ input UserInput {
     password: String!
 }
 
+type Post {
+    title: String!
+    content: String!
+    tags: [String!]
+    image: String
+}
+
+input PostInput {
+    title: String!
+    content: String!
+    tags: [String!]
+    image: String
+}
+
 type Query {
-    numberSix: Int! # Should always return the number 6 when queried
-    numberSeven: Int! # Should always return 7
+    me: User!
 }
 
 type Mutation {
-    RegisterUser(user: UserInput!): Int
+    RegisterUser(user: UserInput!): User!
 }
 
 type Mutation {
     LoginUser(user: UserInput!): String!
+}
+
+type Query {
+    posts: [Post!]!
+    post: Post!
+}
+
+type Mutation {
+    CreatePost(post: PostInput!): Post!
+}
+
+type Mutation {
+    DeletePost(id: Int!): Post!
+}
+
+type Mutation {
+    EditPost(id: Int!): Post!
 }

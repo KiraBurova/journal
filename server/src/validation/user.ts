@@ -1,4 +1,4 @@
-import * as joi from 'joi'
+import joi from 'joi'
 
 export const UserRegistrationSchema = joi.object({
     username: joi.string().max(20).required(),
