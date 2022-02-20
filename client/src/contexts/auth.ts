@@ -5,7 +5,11 @@ import { getToken } from '../utils/token'
 
 export { RouteGuard }
 
-function RouteGuard({ children }: any) {
+interface IRouteGuard {
+    children: JSX.Element
+}
+
+function RouteGuard({ children }: IRouteGuard) {
     const router = useRouter()
     const [authorized, setAuthorized] = useState(false)
 
