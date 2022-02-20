@@ -1,5 +1,7 @@
 import * as React from 'react'
 
-export const HomePage = () => <div>Home page here</div>
+import Home from '../modules/Home'
+
+export const HomePage = () => <Home />
 
 export default HomePage
