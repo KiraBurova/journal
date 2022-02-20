@@ -13,6 +13,7 @@ import '../styles/vars.scss'
 import '../styles/fonts.scss'
 
 import styles from './layout.module.scss'
+import { RouteGuard } from '../contexts/auth'
 
 interface IApp {
     Component: any
@@ -40,7 +41,9 @@ export default enhance(({ Component, pageProps }: IApp) => (
                     autoClose={2000}
                     position="bottom-right"
                 />
-                <Component {...pageProps} />
+                <RouteGuard>
+                    <Component {...pageProps} />
+                </RouteGuard>
             </>
         </Layout>
     </ApolloProvider>

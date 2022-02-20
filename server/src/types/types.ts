@@ -19,8 +19,8 @@ export type Mutation = {
   CreatePost: Post;
   DeletePost: Post;
   EditPost: Post;
-  LoginUser: Scalars['String'];
-  RegisterUser: User;
+  LoginUser?: Maybe<Scalars['String']>;
+  RegisterUser?: Maybe<User>;
 };
 
 
@@ -181,8 +181,8 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   CreatePost?: Resolver<ResolversTypes['Post'], ParentType, ContextType, RequireFields<MutationCreatePostArgs, 'post'>>;
   DeletePost?: Resolver<ResolversTypes['Post'], ParentType, ContextType, RequireFields<MutationDeletePostArgs, 'id'>>;
   EditPost?: Resolver<ResolversTypes['Post'], ParentType, ContextType, RequireFields<MutationEditPostArgs, 'id'>>;
-  LoginUser?: Resolver<ResolversTypes['String'], ParentType, ContextType, RequireFields<MutationLoginUserArgs, 'user'>>;
-  RegisterUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationRegisterUserArgs, 'user'>>;
+  LoginUser?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MutationLoginUserArgs, 'user'>>;
+  RegisterUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationRegisterUserArgs, 'user'>>;
 }>;
 
 export type PostResolvers<ContextType = any, ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']> = ResolversObject<{

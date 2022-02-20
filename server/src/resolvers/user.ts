@@ -12,14 +12,7 @@ interface Resolvers {
 }
 
 const userResolvers: Resolvers = {
-    Query: {
-        numberSix() {
-            return 6
-        },
-        numberSeven() {
-            return 7
-        },
-    },
+    Query: {},
     Mutation: {
         RegisterUser: async (_, { user }) => {
             const { username, email, password } = user

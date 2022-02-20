@@ -29,11 +29,11 @@ type Query {
 }
 
 type Mutation {
-    RegisterUser(user: UserInput!): User!
+    RegisterUser(user: UserInput!): User
 }
 
 type Mutation {
-    LoginUser(user: UserInput!): String!
+    LoginUser(user: UserInput!): String
 }
 
 type Query {
