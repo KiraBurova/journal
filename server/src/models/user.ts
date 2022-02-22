@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb'
 import * as mongoose from 'mongoose'
 const { Schema } = mongoose
 
@@ -13,6 +14,9 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true,
+    },
+    _id: {
+        type: ObjectId,
     },
 })
 

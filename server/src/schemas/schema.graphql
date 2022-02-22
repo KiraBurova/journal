@@ -2,6 +2,7 @@ type User {
     username: String
     email: String!
     password: String!
+    _id: ID!
 }
 
 input UserInput {
@@ -25,7 +26,7 @@ input PostInput {
 }
 
 type Query {
-    me: User!
+    currentUser: User!
 }
 
 type Mutation {

@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 
 import styles from './styles.module.scss'
 
@@ -10,11 +11,6 @@ interface IStyleButton {
 }
 
 const StyleButton = ({ onToggle, active, style, label }: IStyleButton) => {
-    let className = styles.RichEditorStyleButton
-    if (active) {
-        className += ` ${styles.RichEditorRichEditorStyleButtonActiveButton}`
-    }
-
     const handleToggle = (e: React.MouseEvent) => {
         e.preventDefault()
         onToggle(style)
@@ -22,7 +18,9 @@ const StyleButton = ({ onToggle, active, style, label }: IStyleButton) => {
 
     return (
         <span
-            className={className}
+            className={classNames(styles.RichEditorStyleButton, {
+                [styles.RichEditorRichEditorStyleButtonActiveButton]: active,
+            })}
             onMouseDown={handleToggle}
             role="button"
             tabIndex={0}>

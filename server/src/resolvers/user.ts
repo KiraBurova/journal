@@ -5,6 +5,7 @@ import { MutationResolvers, QueryResolvers, User } from '../types/types'
 
 import { UserModel } from '../models'
 import { UserRegistrationSchema, UserLoginSchema } from '../validation'
+import { decodedToken } from '../utils'
 
 interface Resolvers {
     Query: QueryResolvers
@@ -12,7 +13,13 @@ interface Resolvers {
 }
 
 const userResolvers: Resolvers = {
-    Query: {},
+    Query: {
+        currentUser: (root, args, { req }) => {
+            const decoded = decodedToken(req.headers.authorization) as User
+
+            return decoded
+        },
+    },
     Mutation: {
         RegisterUser: async (_, { user }) => {
             const { username, email, password } = user
@@ -66,7 +73,10 @@ const userResolvers: Resolvers = {
             const isValid = await bcrypt.compare(password, foundUser.password)
 
             if (isValid) {
-                return jwt.sign(user, process.env.SECRET)
+                return jwt.sign(
+                    { ...user, _id: foundUser._id },
+                    process.env.SECRET,
+                )
             } else {
                 throw new ApolloError('Password is not correct.')
             }
